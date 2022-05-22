@@ -50,7 +50,7 @@ public class ClientHandler implements Runnable {
             }
             catch (IOException e) {
 
-                closeEveryThing(socket, bufferedWriter, bufferedReader);
+                closeEveryThing(socket, bufferedReader, bufferedWriter);
                 break;
             }
         }
@@ -75,7 +75,7 @@ public class ClientHandler implements Runnable {
             }
             catch (IOException e) {
 
-                closeEveryThing(socket, bufferedWriter, bufferedReader);
+                closeEveryThing(socket, bufferedReader, bufferedWriter);
             }
         }
     }
@@ -88,7 +88,7 @@ public class ClientHandler implements Runnable {
         broadcastMessage("SERVER: " + clientUsername + " User is left");
     }
 
-    public void closeEveryThing(Socket socket, BufferedWriter bufferedWriter, BufferedReader bufferedReader) {
+    public void closeEveryThing(Socket socket,  BufferedReader bufferedReader, BufferedWriter bufferedWriter ) {
 
         removeClientHandler();
 
