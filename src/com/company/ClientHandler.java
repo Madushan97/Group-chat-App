@@ -55,4 +55,28 @@ public class ClientHandler implements Runnable {
             }
         }
     }
+
+    public void broadcastMessage(String messageToSend) {
+
+//        send message to every clients who connected
+//        loop through the clients
+        for (ClientHandler clientHandler : clientHandlers) {
+            try {
+//        if current user is == clientUserName
+                if (!clientHandler.clientUsername.equals(clientUsername)) {
+
+//        send message to the client
+                    clientHandler.bufferedWriter.write(messageToSend);
+//        new line
+                    clientHandler.bufferedWriter.newLine();
+                    clientHandler.bufferedWriter.flush();
+
+                }
+            }
+            catch (IOException e) {
+
+                closeEveryThing(socket, bufferedWriter, bufferedReader);
+            }
+        }
+    }
 }
